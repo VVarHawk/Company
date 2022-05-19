@@ -1,31 +1,31 @@
 /*
 =================================================TODO=================================================
 
-В функции main должен быть главный поток, который создает консольное меню для выбора режима, режимы,
-требующие взаимодействия с пользователем (ввод нового объекта, редактирование объекта, поиск и печатью,
-печать списка объектов и т.п.) выполняются в этом главном потоке. Режимы, не требующие взаимодействия с
-пользователем (удаление, сохранение в файле и чтение из файла), выполняются в отдельном потоке,
-созданном в главном, при этом обеспечить синхронизацию при доступе к данным объектов.
+Г‚ ГґГіГ­ГЄГ¶ГЁГЁ main Г¤Г®Г«Г¦ГҐГ­ ГЎГ»ГІГј ГЈГ«Г ГўГ­Г»Г© ГЇГ®ГІГ®ГЄ, ГЄГ®ГІГ®Г°Г»Г© Г±Г®Г§Г¤Г ГҐГІ ГЄГ®Г­Г±Г®Г«ГјГ­Г®ГҐ Г¬ГҐГ­Гѕ Г¤Г«Гї ГўГ»ГЎГ®Г°Г  Г°ГҐГ¦ГЁГ¬Г , Г°ГҐГ¦ГЁГ¬Г»,
+ГІГ°ГҐГЎГіГѕГ№ГЁГҐ ГўГ§Г ГЁГ¬Г®Г¤ГҐГ©Г±ГІГўГЁГї Г± ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«ГҐГ¬ (ГўГўГ®Г¤ Г­Г®ГўГ®ГЈГ® Г®ГЎГєГҐГЄГІГ , Г°ГҐГ¤Г ГЄГІГЁГ°Г®ГўГ Г­ГЁГҐ Г®ГЎГєГҐГЄГІГ , ГЇГ®ГЁГ±ГЄ ГЁ ГЇГҐГ·Г ГІГјГѕ,
+ГЇГҐГ·Г ГІГј Г±ГЇГЁГ±ГЄГ  Г®ГЎГєГҐГЄГІГ®Гў ГЁ ГІ.ГЇ.) ГўГ»ГЇГ®Г«Г­ГїГѕГІГ±Гї Гў ГЅГІГ®Г¬ ГЈГ«Г ГўГ­Г®Г¬ ГЇГ®ГІГ®ГЄГҐ. ГђГҐГ¦ГЁГ¬Г», Г­ГҐ ГІГ°ГҐГЎГіГѕГ№ГЁГҐ ГўГ§Г ГЁГ¬Г®Г¤ГҐГ©Г±ГІГўГЁГї Г±
+ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«ГҐГ¬ (ГіГ¤Г Г«ГҐГ­ГЁГҐ, Г±Г®ГµГ°Г Г­ГҐГ­ГЁГҐ Гў ГґГ Г©Г«ГҐ ГЁ Г·ГІГҐГ­ГЁГҐ ГЁГ§ ГґГ Г©Г«Г ), ГўГ»ГЇГ®Г«Г­ГїГѕГІГ±Гї Гў Г®ГІГ¤ГҐГ«ГјГ­Г®Г¬ ГЇГ®ГІГ®ГЄГҐ,
+Г±Г®Г§Г¤Г Г­Г­Г®Г¬ Гў ГЈГ«Г ГўГ­Г®Г¬, ГЇГ°ГЁ ГЅГІГ®Г¬ Г®ГЎГҐГ±ГЇГҐГ·ГЁГІГј Г±ГЁГ­ГµГ°Г®Г­ГЁГ§Г Г¶ГЁГѕ ГЇГ°ГЁ Г¤Г®Г±ГІГіГЇГҐ ГЄ Г¤Г Г­Г­Г»Г¬ Г®ГЎГєГҐГЄГІГ®Гў.
 
-  1. Ввод нового объекта (сотрудника) и добавление его в контейнер
-  2. Поиск объекта в контейнере по значениям полей с печатью данных о найденных объектах
-  3. Редактирование объекта
-  4. Удаление объекта из контейнера
-  5. Сохранение данных всех объектов в файле
-  6. Чтение данных объектов из файла
-  7. Сортировка объектов контейнера по выбранному полю для list
-  8. Печать списка объектов
-  9. Предусмотреть обработку исключений, возможные исключения определить самостоятельно
+  1. Г‚ГўГ®Г¤ Г­Г®ГўГ®ГЈГ® Г®ГЎГєГҐГЄГІГ  (Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ ) ГЁ Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ ГҐГЈГ® Гў ГЄГ®Г­ГІГҐГ©Г­ГҐГ°
+  2. ГЏГ®ГЁГ±ГЄ Г®ГЎГєГҐГЄГІГ  Гў ГЄГ®Г­ГІГҐГ©Г­ГҐГ°ГҐ ГЇГ® Г§Г­Г Г·ГҐГ­ГЁГїГ¬ ГЇГ®Г«ГҐГ© Г± ГЇГҐГ·Г ГІГјГѕ Г¤Г Г­Г­Г»Гµ Г® Г­Г Г©Г¤ГҐГ­Г­Г»Гµ Г®ГЎГєГҐГЄГІГ Гµ
+  3. ГђГҐГ¤Г ГЄГІГЁГ°Г®ГўГ Г­ГЁГҐ Г®ГЎГєГҐГЄГІГ 
+  4. Г“Г¤Г Г«ГҐГ­ГЁГҐ Г®ГЎГєГҐГЄГІГ  ГЁГ§ ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г 
+  5. Г‘Г®ГµГ°Г Г­ГҐГ­ГЁГҐ Г¤Г Г­Г­Г»Гµ ГўГ±ГҐГµ Г®ГЎГєГҐГЄГІГ®Гў Гў ГґГ Г©Г«ГҐ
+  6. Г—ГІГҐГ­ГЁГҐ Г¤Г Г­Г­Г»Гµ Г®ГЎГєГҐГЄГІГ®Гў ГЁГ§ ГґГ Г©Г«Г 
+  7. Г‘Г®Г°ГІГЁГ°Г®ГўГЄГ  Г®ГЎГєГҐГЄГІГ®Гў ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г  ГЇГ® ГўГ»ГЎГ°Г Г­Г­Г®Г¬Гі ГЇГ®Г«Гѕ Г¤Г«Гї list
+  8. ГЏГҐГ·Г ГІГј Г±ГЇГЁГ±ГЄГ  Г®ГЎГєГҐГЄГІГ®Гў
+  9. ГЏГ°ГҐГ¤ГіГ±Г¬Г®ГІГ°ГҐГІГј Г®ГЎГ°Г ГЎГ®ГІГЄГі ГЁГ±ГЄГ«ГѕГ·ГҐГ­ГЁГ©, ГўГ®Г§Г¬Г®Г¦Г­Г»ГҐ ГЁГ±ГЄГ«ГѕГ·ГҐГ­ГЁГї Г®ГЇГ°ГҐГ¤ГҐГ«ГЁГІГј Г±Г Г¬Г®Г±ГІГ®ГїГІГҐГ«ГјГ­Г®
 
-  10. Для классов объектов явно определяются и разрабатываются:
-		1) конструкторы и деструкторы (не менее 2),
-		2) не менее 4 методов (функций членов класса) и не менее 4 свойств (данных класса);
-		3) по выбору, в зависимости от варианта, определяется как минимум одна перегружаемая операция
-			(обязательная операция, обозначенная знаком "+" )
-		4) Описания классов должны быть вынесены в отдельные файлы (*.h).
-			При этом необходимо исключить повторное включение описаний в исходный текст.
-		5) Обязательным является перегрузка операции вывода (<<) в стандартный поток cout
-			для предметного класса.
+  10. Г„Г«Гї ГЄГ«Г Г±Г±Г®Гў Г®ГЎГєГҐГЄГІГ®Гў ГїГўГ­Г® Г®ГЇГ°ГҐГ¤ГҐГ«ГїГѕГІГ±Гї ГЁ Г°Г Г§Г°Г ГЎГ ГІГ»ГўГ ГѕГІГ±Гї:
+		1) ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г°Г» ГЁ Г¤ГҐГ±ГІГ°ГіГЄГІГ®Г°Г» (Г­ГҐ Г¬ГҐГ­ГҐГҐ 2),
+		2) Г­ГҐ Г¬ГҐГ­ГҐГҐ 4 Г¬ГҐГІГ®Г¤Г®Гў (ГґГіГ­ГЄГ¶ГЁГ© Г·Г«ГҐГ­Г®Гў ГЄГ«Г Г±Г±Г ) ГЁ Г­ГҐ Г¬ГҐГ­ГҐГҐ 4 Г±ГўГ®Г©Г±ГІГў (Г¤Г Г­Г­Г»Гµ ГЄГ«Г Г±Г±Г );
+		3) ГЇГ® ГўГ»ГЎГ®Г°Гі, Гў Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГЁ Г®ГІ ГўГ Г°ГЁГ Г­ГІГ , Г®ГЇГ°ГҐГ¤ГҐГ«ГїГҐГІГ±Гї ГЄГ ГЄ Г¬ГЁГ­ГЁГ¬ГіГ¬ Г®Г¤Г­Г  ГЇГҐГ°ГҐГЈГ°ГіГ¦Г ГҐГ¬Г Гї Г®ГЇГҐГ°Г Г¶ГЁГї
+			(Г®ГЎГїГ§Г ГІГҐГ«ГјГ­Г Гї Г®ГЇГҐГ°Г Г¶ГЁГї, Г®ГЎГ®Г§Г­Г Г·ГҐГ­Г­Г Гї Г§Г­Г ГЄГ®Г¬ "+" )
+		4) ГЋГЇГЁГ±Г Г­ГЁГї ГЄГ«Г Г±Г±Г®Гў Г¤Г®Г«Г¦Г­Г» ГЎГ»ГІГј ГўГ»Г­ГҐГ±ГҐГ­Г» Гў Г®ГІГ¤ГҐГ«ГјГ­Г»ГҐ ГґГ Г©Г«Г» (*.h).
+			ГЏГ°ГЁ ГЅГІГ®Г¬ Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® ГЁГ±ГЄГ«ГѕГ·ГЁГІГј ГЇГ®ГўГІГ®Г°Г­Г®ГҐ ГўГЄГ«ГѕГ·ГҐГ­ГЁГҐ Г®ГЇГЁГ±Г Г­ГЁГ© Гў ГЁГ±ГµГ®Г¤Г­Г»Г© ГІГҐГЄГ±ГІ.
+		5) ГЋГЎГїГ§Г ГІГҐГ«ГјГ­Г»Г¬ ГїГўГ«ГїГҐГІГ±Гї ГЇГҐГ°ГҐГЈГ°ГіГ§ГЄГ  Г®ГЇГҐГ°Г Г¶ГЁГЁ ГўГ»ГўГ®Г¤Г  (<<) Гў Г±ГІГ Г­Г¤Г Г°ГІГ­Г»Г© ГЇГ®ГІГ®ГЄ cout
+			Г¤Г«Гї ГЇГ°ГҐГ¤Г¬ГҐГІГ­Г®ГЈГ® ГЄГ«Г Г±Г±Г .
 
 ======================================================================================================
 */
@@ -34,7 +34,6 @@
 #include <string>
 #include <list>
 #include <iomanip>
-#include <Windows.h>
 #include <thread>
 
 #include "Company.h"
@@ -44,8 +43,7 @@
 
 int main()
 {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
+	setlocale(LC_ALL, "RU");
 
 	Company company;
 	std::thread* th = nullptr;
@@ -58,41 +56,41 @@ int main()
 			{
 			case MENU_MODE::ADD_EMPLOYEE:
 			{
-				std::cout << "Введите имя нового сотрудника (через Enter): ";
+				std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЁГ¬Гї Г­Г®ГўГ®ГЈГ® Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 				std::string  employee_name = input_string();
-				std::cout << "Введите возраст нового сотрудника (через Enter): ";
+				std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГўГ®Г§Г°Г Г±ГІ Г­Г®ГўГ®ГЈГ® Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 				size_t employee_age = input_size_t();
-				std::cout << "Введите должность нового сотрудника (через Enter): ";
+				std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г¤Г®Г«Г¦Г­Г®Г±ГІГј Г­Г®ГўГ®ГЈГ® Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 				std::string  employee_work_position = input_string();
-				std::cout << "Введите зарплату нового сотрудника (через Enter): ";
+				std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г§Г Г°ГЇГ«Г ГІГі Г­Г®ГўГ®ГЈГ® Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 				size_t employee_salary = input_size_t();
-				std::cout << "Введите опыт работы нового сотрудника (через Enter): ";
+				std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г®ГЇГ»ГІ Г°Г ГЎГ®ГІГ» Г­Г®ГўГ®ГЈГ® Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 				size_t employee_work_experience = input_size_t();
-				std::cout << "Введите id департамент нового сотрудника или 0, если нет (через Enter): ";
+				std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ id Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІ Г­Г®ГўГ®ГЈГ® Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  ГЁГ«ГЁ 0, ГҐГ±Г«ГЁ Г­ГҐГІ (Г·ГҐГ°ГҐГ§ Enter): ";
 				size_t employee_department_id = input_size_t(); std::wcout << std::endl;
 
 
 				if (size_t new_employee_id = company.create_employee(employee_name, employee_age, employee_work_position, employee_salary, employee_work_experience, employee_department_id))
 				{
-					std::cout << "Сотрудник успешно добавлен!\n";
+					std::cout << "Г‘Г®ГІГ°ГіГ¤Г­ГЁГЄ ГіГ±ГЇГҐГёГ­Г® Г¤Г®ГЎГ ГўГ«ГҐГ­!\n";
 					company.print_employee(new_employee_id);
 					std::cout << "\n\n\n\n";
 				}
 				else
-					std::cout << "Ошибка добавления сотрудника!\n\n\n\n";
+					std::cout << "ГЋГёГЁГЎГЄГ  Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ !\n\n\n\n";
 				/*std::thread th(&Company::create_employee, std::ref(company), employee_name, employee_age, employee_work_position, employee_salary, employee_work_experience, employee_department_id);
 				th.join();*/
 				break;
 			}
 			case MENU_MODE::ADD_DEPARTMENT:
 			{
-				std::cout << "Введите название нового департамента (через Enter): ";
+				std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г­Г Г§ГўГ Г­ГЁГҐ Г­Г®ГўГ®ГЈГ® Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 				std::string department_name = input_string(); std::cout << std::endl;
 
 				if (size_t new_department_id = company.create_department(department_name))
-					std::cout << "Департамент успешно создан!\n\n\n\n";
+					std::cout << "Г„ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІ ГіГ±ГЇГҐГёГ­Г® Г±Г®Г§Г¤Г Г­!\n\n\n\n";
 				else
-					std::cout << "Ошибка создания департамента\n\n\n\n";
+					std::cout << "ГЋГёГЁГЎГЄГ  Г±Г®Г§Г¤Г Г­ГЁГї Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ \n\n\n\n";
 
 				/*std::thread th(&Company::create_department, std::ref(company), department_name);
 				th.join();*/
@@ -113,7 +111,7 @@ int main()
 			}
 			case MENU_MODE::PRINT_EMPLOYEES_FROM_DEPARTMENT:
 			{
-				std::cout << "Введите id департамента: "; size_t department_id = input_size_t(); std::cout << std::endl;
+				std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ id Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ : "; size_t department_id = input_size_t(); std::cout << std::endl;
 				company.print_all_employees_from_department(department_id);
 				std::cout << "\n\n\n\n";
 				break;
@@ -124,41 +122,41 @@ int main()
 				{
 				case EMPLOYEE_FIND_MODE::ID:
 				{
-					std::cout << "Введите id сотрудника: "; size_t employee_id = input_size_t(); std::cout << std::endl;
-					std::cout << "Результаты поиска:\n"; company.print_employee(employee_id);
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ id Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ : "; size_t employee_id = input_size_t(); std::cout << std::endl;
+					std::cout << "ГђГҐГ§ГіГ«ГјГІГ ГІГ» ГЇГ®ГЁГ±ГЄГ :\n"; company.print_employee(employee_id);
 					break;
 				}
 				case EMPLOYEE_FIND_MODE::NAME:
 				{
-					std::cout << "Введите имя сотрудника: "; std::string employee_name = input_string(); std::cout << std::endl;
-					std::cout << "Результаты поиска:\n"; company.print_employee_with_name(employee_name);
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЁГ¬Гї Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ : "; std::string employee_name = input_string(); std::cout << std::endl;
+					std::cout << "ГђГҐГ§ГіГ«ГјГІГ ГІГ» ГЇГ®ГЁГ±ГЄГ :\n"; company.print_employee_with_name(employee_name);
 					break;
 				}
 				case EMPLOYEE_FIND_MODE::AGE:
 				{
-					std::cout << "Сотрудник не младше : "; size_t under_age = input_size_t();
-					std::cout << "и не старше : "; size_t over_age = input_size_t(); std::cout << std::endl;
-					std::cout << "Результаты поиска:\n"; company.print_employee_with_age(under_age, over_age);
+					std::cout << "Г‘Г®ГІГ°ГіГ¤Г­ГЁГЄ Г­ГҐ Г¬Г«Г Г¤ГёГҐ : "; size_t under_age = input_size_t();
+					std::cout << "ГЁ Г­ГҐ Г±ГІГ Г°ГёГҐ : "; size_t over_age = input_size_t(); std::cout << std::endl;
+					std::cout << "ГђГҐГ§ГіГ«ГјГІГ ГІГ» ГЇГ®ГЁГ±ГЄГ :\n"; company.print_employee_with_age(under_age, over_age);
 					break;
 				}
 				case EMPLOYEE_FIND_MODE::WORK_POSITION:
 				{
-					std::cout << "Введите имя сотрудника: "; std::string work_position = input_string(); std::cout << std::endl;
-					std::cout << "Результаты поиска:\n"; company.print_employee_with_work_position(work_position);
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЁГ¬Гї Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ : "; std::string work_position = input_string(); std::cout << std::endl;
+					std::cout << "ГђГҐГ§ГіГ«ГјГІГ ГІГ» ГЇГ®ГЁГ±ГЄГ :\n"; company.print_employee_with_work_position(work_position);
 					break;
 				}
 				case EMPLOYEE_FIND_MODE::SALARY:
 				{
-					std::cout << "Сотрудник получает не меньше : "; size_t under = input_size_t();
-					std::cout << "и не больше : "; size_t over = input_size_t(); std::cout << std::endl;
-					std::cout << "Результаты поиска:\n"; company.print_employee_with_salary(under, over);
+					std::cout << "Г‘Г®ГІГ°ГіГ¤Г­ГЁГЄ ГЇГ®Г«ГіГ·Г ГҐГІ Г­ГҐ Г¬ГҐГ­ГјГёГҐ : "; size_t under = input_size_t();
+					std::cout << "ГЁ Г­ГҐ ГЎГ®Г«ГјГёГҐ : "; size_t over = input_size_t(); std::cout << std::endl;
+					std::cout << "ГђГҐГ§ГіГ«ГјГІГ ГІГ» ГЇГ®ГЁГ±ГЄГ :\n"; company.print_employee_with_salary(under, over);
 					break;
 				}
 				case EMPLOYEE_FIND_MODE::WORK_EXPERIENCE:
 				{
-					std::cout << "Сотрудник получает не меньше : "; size_t under = input_size_t();
-					std::cout << "и не больше : "; size_t over = input_size_t(); std::cout << std::endl;
-					std::cout << "Результаты поиска:\n"; company.print_employee_with_salary(under, over);
+					std::cout << "Г‘Г®ГІГ°ГіГ¤Г­ГЁГЄ ГЇГ®Г«ГіГ·Г ГҐГІ Г­ГҐ Г¬ГҐГ­ГјГёГҐ : "; size_t under = input_size_t();
+					std::cout << "ГЁ Г­ГҐ ГЎГ®Г«ГјГёГҐ : "; size_t over = input_size_t(); std::cout << std::endl;
+					std::cout << "ГђГҐГ§ГіГ«ГјГІГ ГІГ» ГЇГ®ГЁГ±ГЄГ :\n"; company.print_employee_with_salary(under, over);
 					break;
 				}
 				case EMPLOYEE_FIND_MODE::BACK:
@@ -175,21 +173,21 @@ int main()
 				{
 				case DEPARTMENT_FIND_MODE::ID:
 				{
-					std::cout << "Введите id департамента: "; size_t department_id = input_size_t(); std::cout << std::endl;
-					std::cout << "Результаты поиска:\n"; company.print_department(department_id);
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ id Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ : "; size_t department_id = input_size_t(); std::cout << std::endl;
+					std::cout << "ГђГҐГ§ГіГ«ГјГІГ ГІГ» ГЇГ®ГЁГ±ГЄГ :\n"; company.print_department(department_id);
 					break;
 				}
 				case DEPARTMENT_FIND_MODE::NAME:
 				{
-					std::cout << "Введите название департамента : "; std::string department_name = input_string(); std::cout << std::endl;
-					std::cout << "Результаты поиска:\n"; company.print_department_with_name(department_name);
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г­Г Г§ГўГ Г­ГЁГҐ Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ  : "; std::string department_name = input_string(); std::cout << std::endl;
+					std::cout << "ГђГҐГ§ГіГ«ГјГІГ ГІГ» ГЇГ®ГЁГ±ГЄГ :\n"; company.print_department_with_name(department_name);
 					break;
 				}
 				case DEPARTMENT_FIND_MODE::N_EMPLOYEES:
 				{
-					std::cout << "В департаменте работает не меньше : "; size_t under = input_size_t();
-					std::cout << ", и не больше : "; size_t over = input_size_t(); std::cout << std::endl;
-					std::cout << "Результаты поиска:\n"; company.print_department_with_n_employees(under, over);
+					std::cout << "Г‚ Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГҐ Г°Г ГЎГ®ГІГ ГҐГІ Г­ГҐ Г¬ГҐГ­ГјГёГҐ : "; size_t under = input_size_t();
+					std::cout << ", ГЁ Г­ГҐ ГЎГ®Г«ГјГёГҐ : "; size_t over = input_size_t(); std::cout << std::endl;
+					std::cout << "ГђГҐГ§ГіГ«ГјГІГ ГІГ» ГЇГ®ГЁГ±ГЄГ :\n"; company.print_department_with_n_employees(under, over);
 					break;
 				}
 				case DEPARTMENT_FIND_MODE::BACK:
@@ -202,24 +200,24 @@ int main()
 			}
 			case MENU_MODE::EDIT_EMPLOYEE_PROFILE:
 			{
-				std::cout << "Введите id сотрудника: "; size_t employee_id = input_size_t(); std::cout << std::endl;
-				std::cout << "Результаты поиска:\n"; company.print_employee(employee_id);
+				std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ id Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ : "; size_t employee_id = input_size_t(); std::cout << std::endl;
+				std::cout << "ГђГҐГ§ГіГ«ГјГІГ ГІГ» ГЇГ®ГЁГ±ГЄГ :\n"; company.print_employee(employee_id);
 
 				switch (employee_profile_menu())
 				{
 				case EMPLOYEE_PROFILE_MODE::EDIT_ALL:
 				{
-					std::cout << "Введите имя нового сотрудника (через Enter): ";
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЁГ¬Гї Г­Г®ГўГ®ГЈГ® Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 					std::string  employee_name = input_string(); std::cout << std::endl;
-					std::cout << "Введите возраст нового сотрудника (через Enter): ";
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГўГ®Г§Г°Г Г±ГІ Г­Г®ГўГ®ГЈГ® Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 					size_t age = input_size_t(); std::cout << std::endl;
-					std::cout << "Введите должность нового сотрудника (через Enter): ";
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г¤Г®Г«Г¦Г­Г®Г±ГІГј Г­Г®ГўГ®ГЈГ® Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 					std::string  work_position = input_string(); std::cout << std::endl;
-					std::cout << "Введите зарплату нового сотрудника (через Enter): ";
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г§Г Г°ГЇГ«Г ГІГі Г­Г®ГўГ®ГЈГ® Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 					size_t salary = input_size_t(); std::cout << std::endl;
-					std::cout << "Введите опыт работы нового сотрудника (через Enter): ";
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г®ГЇГ»ГІ Г°Г ГЎГ®ГІГ» Г­Г®ГўГ®ГЈГ® Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 					size_t work_experience = input_size_t(); std::cout << std::endl;
-					std::cout << "Введите id департамент нового сотрудника (через Enter): ";
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ id Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІ Г­Г®ГўГ®ГЈГ® Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 					size_t department_id = input_size_t(); std::cout << std::endl;
 
 					company.edit_employee
@@ -231,12 +229,12 @@ int main()
 						salary,
 						work_experience
 					);
-					std::cout << "Профиль сотрудника успешно изменен!\n";
+					std::cout << "ГЏГ°Г®ГґГЁГ«Гј Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  ГіГ±ГЇГҐГёГ­Г® ГЁГ§Г¬ГҐГ­ГҐГ­!\n";
 					break;
 				}
 				case EMPLOYEE_PROFILE_MODE::EDIT_NAME:
 				{
-					std::cout << "Введите новое имя: ";  std::string  employee_name = input_string(); std::cout << std::endl;
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г­Г®ГўГ®ГҐ ГЁГ¬Гї: ";  std::string  employee_name = input_string(); std::cout << std::endl;
 					company.edit_employee
 					(
 						employee_id,
@@ -246,12 +244,12 @@ int main()
 						company.get_employee_salary(employee_id),
 						company.get_employee_work_experience(employee_id)
 					);
-					std::cout << "Профиль сотрудника успешно изменен!\n";
+					std::cout << "ГЏГ°Г®ГґГЁГ«Гј Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  ГіГ±ГЇГҐГёГ­Г® ГЁГ§Г¬ГҐГ­ГҐГ­!\n";
 					break;
 				}
 				case EMPLOYEE_PROFILE_MODE::EDIT_AGE:
 				{
-					std::cout << "Введите новый возраст: "; size_t age = input_size_t(); std::cout << std::endl;
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г­Г®ГўГ»Г© ГўГ®Г§Г°Г Г±ГІ: "; size_t age = input_size_t(); std::cout << std::endl;
 					company.edit_employee
 					(
 						employee_id,
@@ -261,12 +259,12 @@ int main()
 						company.get_employee_salary(employee_id),
 						company.get_employee_work_experience(employee_id)
 					);
-					std::cout << "Профиль сотрудника успешно изменен!\n";
+					std::cout << "ГЏГ°Г®ГґГЁГ«Гј Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  ГіГ±ГЇГҐГёГ­Г® ГЁГ§Г¬ГҐГ­ГҐГ­!\n";
 					break;
 				}
 				case EMPLOYEE_PROFILE_MODE::EDIT_WORK_POSITION:
 				{
-					std::cout << "Введите новую должность: "; std::string  work_position = input_string(); std::cout << std::endl;
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г­Г®ГўГіГѕ Г¤Г®Г«Г¦Г­Г®Г±ГІГј: "; std::string  work_position = input_string(); std::cout << std::endl;
 					company.edit_employee
 					(
 						employee_id,
@@ -276,12 +274,12 @@ int main()
 						company.get_employee_salary(employee_id),
 						company.get_employee_work_experience(employee_id)
 					);
-					std::cout << "Профиль сотрудника успешно изменен!\n";
+					std::cout << "ГЏГ°Г®ГґГЁГ«Гј Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  ГіГ±ГЇГҐГёГ­Г® ГЁГ§Г¬ГҐГ­ГҐГ­!\n";
 					break;
 				}
 				case EMPLOYEE_PROFILE_MODE::EDIT_SALARY:
 				{
-					std::cout << "Введите новую зарплату: "; size_t salary = input_size_t(); std::cout << std::endl;
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г­Г®ГўГіГѕ Г§Г Г°ГЇГ«Г ГІГі: "; size_t salary = input_size_t(); std::cout << std::endl;
 					company.edit_employee
 					(
 						employee_id,
@@ -291,12 +289,12 @@ int main()
 						salary,
 						company.get_employee_work_experience(employee_id)
 					);
-					std::cout << "Профиль сотрудника успешно изменен!\n";
+					std::cout << "ГЏГ°Г®ГґГЁГ«Гј Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  ГіГ±ГЇГҐГёГ­Г® ГЁГ§Г¬ГҐГ­ГҐГ­!\n";
 					break;
 				}
 				case EMPLOYEE_PROFILE_MODE::EDIT_WORK_EXPERIENCE:
 				{
-					std::cout << "Введите новый опыт работы: "; size_t work_experience = input_size_t(); std::cout << std::endl;
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г­Г®ГўГ»Г© Г®ГЇГ»ГІ Г°Г ГЎГ®ГІГ»: "; size_t work_experience = input_size_t(); std::cout << std::endl;
 					company.edit_employee
 					(
 						employee_id,
@@ -306,20 +304,20 @@ int main()
 						company.get_employee_salary(employee_id),
 						work_experience
 					);
-					std::cout << "Профиль сотрудника успешно изменен!\n";
+					std::cout << "ГЏГ°Г®ГґГЁГ«Гј Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  ГіГ±ГЇГҐГёГ­Г® ГЁГ§Г¬ГҐГ­ГҐГ­!\n";
 					break;
 				}
 				case EMPLOYEE_PROFILE_MODE::EDIT_WORK_DEPARTMENT:
 				{
-					std::cout << "Введите id нового департамента: "; size_t new_department_id = input_size_t(); std::cout << std::endl;
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ id Г­Г®ГўГ®ГЈГ® Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ : "; size_t new_department_id = input_size_t(); std::cout << std::endl;
 					company.transfer_employee(employee_id, new_department_id);
-					std::cout << "Профиль сотрудника успешно изменен!\n";
+					std::cout << "ГЏГ°Г®ГґГЁГ«Гј Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  ГіГ±ГЇГҐГёГ­Г® ГЁГ§Г¬ГҐГ­ГҐГ­!\n";
 					break;
 				}
 				case EMPLOYEE_PROFILE_MODE::DELETE_EMPLOYEE:
 				{
 					company.delete_employee(employee_id);
-					std::cout << "Профиль сотрудника успешно удален!\n";
+					std::cout << "ГЏГ°Г®ГґГЁГ«Гј Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  ГіГ±ГЇГҐГёГ­Г® ГіГ¤Г Г«ГҐГ­!\n";
 					break;
 				}
 				case EMPLOYEE_PROFILE_MODE::BACK:
@@ -332,38 +330,38 @@ int main()
 			}
 			case MENU_MODE::EDIT_DEPARTMENT_RROFILE:
 			{
-				std::cout << "Введите id департамента: "; size_t department_id = input_size_t(); std::cout << std::endl;
-				std::cout << "Результаты поиска:\n"; company.print_department(department_id);
+				std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ id Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ : "; size_t department_id = input_size_t(); std::cout << std::endl;
+				std::cout << "ГђГҐГ§ГіГ«ГјГІГ ГІГ» ГЇГ®ГЁГ±ГЄГ :\n"; company.print_department(department_id);
 
 				switch (department_profile_menu())
 				{
 				case DEPARTMENT_PROFILE_MODE::EDIT_ALL:
 				{
-					std::cout << "Введите название нового департамента (через Enter): ";
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г­Г Г§ГўГ Г­ГЁГҐ Г­Г®ГўГ®ГЈГ® Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 					std::string  department_name = input_string(); std::cout << std::endl;
-					std::cout << "Введите id нового главы департамента (через Enter): ";
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ id Г­Г®ГўГ®ГЈГ® ГЈГ«Г ГўГ» Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 					size_t department_head_id = input_size_t(); std::cout << std::endl;
 
 					company.edit_department(department_id, department_name, department_head_id);
-					std::cout << "Профиль успешно изменен!\n";
+					std::cout << "ГЏГ°Г®ГґГЁГ«Гј ГіГ±ГЇГҐГёГ­Г® ГЁГ§Г¬ГҐГ­ГҐГ­!\n";
 					break;
 				}
 				case DEPARTMENT_PROFILE_MODE::EDIT_NAME:
 				{
-					std::cout << "Введите название нового департамента (через Enter): ";
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г­Г Г§ГўГ Г­ГЁГҐ Г­Г®ГўГ®ГЈГ® Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 					std::string  dep_name = input_string(); std::cout << std::endl;
 
 					company.edit_department(department_id, dep_name, company.get_department_head_id(department_id));
-					std::cout << "Профиль успешно изменен!\n";
+					std::cout << "ГЏГ°Г®ГґГЁГ«Гј ГіГ±ГЇГҐГёГ­Г® ГЁГ§Г¬ГҐГ­ГҐГ­!\n";
 					break;
 				}
 				case DEPARTMENT_PROFILE_MODE::EDIT_DEPARTMENT_HEAD:
 				{
-					std::cout << "Введите id нового главы департамента (через Enter): ";
+					std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ id Г­Г®ГўГ®ГЈГ® ГЈГ«Г ГўГ» Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ  (Г·ГҐГ°ГҐГ§ Enter): ";
 					size_t new_dep_head_id = input_size_t(); std::cout << std::endl;
 
 					company.edit_department(department_id, company.get_department_name(department_id), new_dep_head_id);/////////////////////////////////////
-					std::cout << "Профиль успешно изменен!\n";
+					std::cout << "ГЏГ°Г®ГґГЁГ«Гј ГіГ±ГЇГҐГёГ­Г® ГЁГ§Г¬ГҐГ­ГҐГ­!\n";
 					break;
 				}
 				case DEPARTMENT_PROFILE_MODE::DELETE_DEPARTMENT_HEAD:
@@ -374,7 +372,7 @@ int main()
 				case DEPARTMENT_PROFILE_MODE::DELETE_DEPARTMENT://////////////////////////////////
 				{
 					company.delete_department(department_id);
-					std::cout << "Профиль департамента успешно удален!\n";
+					std::cout << "ГЏГ°Г®ГґГЁГ«Гј Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ  ГіГ±ГЇГҐГёГ­Г® ГіГ¤Г Г«ГҐГ­!\n";
 					break;
 				}
 				case DEPARTMENT_PROFILE_MODE::BACK:
@@ -424,7 +422,7 @@ int main()
 					break;
 				}
 				}
-				std::cout << "Сортировка сотрудников завершена!\n\n\n\n";
+				std::cout << "Г‘Г®Г°ГІГЁГ°Г®ГўГЄГ  Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ®Гў Г§Г ГўГҐГ°ГёГҐГ­Г !\n\n\n\n";
 				break;
 			}
 			case MENU_MODE::SORT_DEPARTMENTS:
@@ -451,7 +449,7 @@ int main()
 					break;
 				}
 				}
-				std::cout << "Сортировка департаментов завершена!\n\n\n\n";
+				std::cout << "Г‘Г®Г°ГІГЁГ°Г®ГўГЄГ  Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ®Гў Г§Г ГўГҐГ°ГёГҐГ­Г !\n\n\n\n";
 				break;
 			}
 			case MENU_MODE::SAVE:
@@ -460,7 +458,7 @@ int main()
 				const Company c(company);
 				th = new std::thread(&Company::save, c, file_path);
 				/*company.save(file_path);
-				std::cout << "Файл успешно сохранен!\n\n\n\n";*/
+				std::cout << "Г”Г Г©Г« ГіГ±ГЇГҐГёГ­Г® Г±Г®ГµГ°Г Г­ГҐГ­!\n\n\n\n";*/
 				std::cout << "\n\n\n\n";
 				break;
 			}
@@ -468,14 +466,14 @@ int main()
 			{
 				std::string file_path = "D:\\Company\\Company\\files\\file.txt";
 				company.download(file_path);
-				std::cout << "Файл успешно загружен\n\n\n\n";
+				std::cout << "Г”Г Г©Г« ГіГ±ГЇГҐГёГ­Г® Г§Г ГЈГ°ГіГ¦ГҐГ­\n\n\n\n";
 				break;
 			}
 			case MENU_MODE::EXIT:
 			{
 				for (;;)
 				{
-					std::cout << "Сохранить данные перед выходом? ((y)es/(n)o\n";
+					std::cout << "Г‘Г®ГµГ°Г Г­ГЁГІГј Г¤Г Г­Г­Г»ГҐ ГЇГҐГ°ГҐГ¤ ГўГ»ГµГ®Г¤Г®Г¬? ((y)es/(n)o\n";
 					wchar_t ans; std::wcin >> ans;
 					switch (ans)
 					{
@@ -483,14 +481,14 @@ int main()
 						if(th != nullptr)
 							th->join();
 						company.save("D:\\Company\\Company\\files\\file.txt");
-						std::cout << "Файл успешно сохранен!\n\n\n\n";
+						std::cout << "Г”Г Г©Г« ГіГ±ГЇГҐГёГ­Г® Г±Г®ГµГ°Г Г­ГҐГ­!\n\n\n\n";
 						return 0;
 					case 'n':
 						if (th != nullptr)
 							th->join();
 						return 0;
 					default:
-						std::cout << "Некорректный ввод\n";
+						std::cout << "ГЌГҐГЄГ®Г°Г°ГҐГЄГІГ­Г»Г© ГўГўГ®Г¤\n";
 						break;
 					}
 				}
