@@ -56,17 +56,17 @@ int main()
 			{
 			case MENU_MODE::ADD_EMPLOYEE:
 			{
-				std::cout << "Ââåäèòå èìÿ íîâîãî ñîòðóäíèêà (÷åðåç Enter): ";
+				std::cout << "Enter employee name: ";
 				std::string  employee_name = input_string();
-				std::cout << "Ââåäèòå âîçðàñò íîâîãî ñîòðóäíèêà (÷åðåç Enter): ";
+				std::cout << "Enter employee age: ";
 				size_t employee_age = input_size_t();
-				std::cout << "Ââåäèòå äîëæíîñòü íîâîãî ñîòðóäíèêà (÷åðåç Enter): ";
+				std::cout << "Enter employee work position: ";
 				std::string  employee_work_position = input_string();
-				std::cout << "Ââåäèòå çàðïëàòó íîâîãî ñîòðóäíèêà (÷åðåç Enter): ";
+				std::cout << "Enter employee salary: ";
 				size_t employee_salary = input_size_t();
-				std::cout << "Ââåäèòå îïûò ðàáîòû íîâîãî ñîòðóäíèêà (÷åðåç Enter): ";
+				std::cout << "Enter employee work experience: ";
 				size_t employee_work_experience = input_size_t();
-				std::cout << "Ââåäèòå id äåïàðòàìåíò íîâîãî ñîòðóäíèêà èëè 0, åñëè íåò (÷åðåç Enter): ";
+				std::cout << "Enter employee department: ";
 				size_t employee_department_id = input_size_t(); std::wcout << std::endl;
 
 

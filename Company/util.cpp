@@ -9,11 +9,11 @@ MENU_MODE main_menu()
 		try
 		{
 			std::cout << "-----------------*ГЛАВНОЕ МЕНЮ*-----------------\n";
-			std::cout << "1. Запись нового сотрудника\n";
-			std::cout << "2. Создать новый департамент\n";
-			std::cout << "3. Распечатать всех сотрудников\n";
-			std::cout << "4. Распечатать всех сотрудников департамента\n";
-			std::cout << "5. Распечатать все департаменты\n";
+			std::cout << "1. Add new employee\n";
+			std::cout << "2. Add new department\n";
+			std::cout << "3. Print all employees\n";
+			std::cout << "4. Print all employees from department\n";
+			std::cout << "5. Print all departments\n";
 			std::cout << "6. Найти сотрудника\n";
 			std::cout << "7. Найти департамент\n";
 			std::cout << "8. Редактировать профиль сотрудника\n";
