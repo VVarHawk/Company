@@ -10,6 +10,7 @@
 #include <limits>
 #include <thread>
 #include <future>
+#include <exception>
 
 
 class Company

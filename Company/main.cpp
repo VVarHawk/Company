@@ -3,6 +3,7 @@
 #include <list>
 #include <iomanip>
 #include <thread>
+#include <exception>
 
 #include "Company.h"
 #include "util.h"
