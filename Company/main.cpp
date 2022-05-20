@@ -432,10 +432,10 @@ int main()
 			case MENU_MODE::SAVE:
 			{
 				std::string file_path = "D:\\Company\\Company\\files\\file.txt";
-				const Company c(company);
-				th = new std::thread(&Company::save, c, file_path);
-				/*company.save(file_path);
-				std::cout << "File saved successfully";*/
+				/*const Company c(company);
+				th = new std::thread(&Company::save, std::ref(c), file_path);*/
+				company.save(file_path);
+				std::cout << "File saved successfully";
 				std::cout << "\n\n\n\n";
 				break;
 			}

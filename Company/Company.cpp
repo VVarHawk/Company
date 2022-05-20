@@ -321,10 +321,10 @@ void Company::print_department_with_n_employees(size_t under, size_t over) const
 
 void Company::sort_employees_by_id()
 {
-	std::list<std::thread*> th;
+	/*std::list<std::thread*> th;
 	for (Department* dep : departments)
 	{
-		th.push_back(new std::thread(&Company::Department::sort_employees_from_department_by_id, dep));
+		th.push_back(new std::thread(&Company::Department::sort_employees_from_department_by_id, std::ref(dep)));
 	}
 	for (std::thread* t : th)
 	{
@@ -335,14 +335,19 @@ void Company::sort_employees_by_id()
 		std::thread* t = th.front();
 		th.remove(t);
 		delete t;
+	}*/
+
+	for (Department* dep : departments)
+	{
+		dep->sort_employees_from_department_by_id();
 	}
 }
 void Company::sort_employees_by_name()
 {
-	std::list<std::thread*> th;
+	/*std::list<std::thread*> th;
 	for (Department* dep : departments)
 	{
-		th.push_back(new std::thread(&Company::Department::sort_employees_from_department_by_name, dep));
+		th.push_back(new std::thread(&Company::Department::sort_employees_from_department_by_name, std::ref(dep)));
 	}
 	for (std::thread* t : th)
 	{
@@ -353,14 +358,19 @@ void Company::sort_employees_by_name()
 		std::thread* t = th.front();
 		th.remove(t);
 		delete t;
+	}*/
+
+	for (Department* dep : departments)
+	{
+		dep->sort_employees_from_department_by_name();
 	}
 }
 void Company::sort_employees_by_age()
 {
-	std::list<std::thread*> th;
+	/*std::list<std::thread*> th;
 	for (Department* dep : departments)
 	{
-		th.push_back(new std::thread(&Company::Department::sort_employees_from_department_by_age, dep));
+		th.push_back(new std::thread(&Company::Department::sort_employees_from_department_by_age, std::ref(dep)));
 	}
 	for (std::thread* t : th)
 	{
@@ -371,14 +381,19 @@ void Company::sort_employees_by_age()
 		std::thread* t = th.front();
 		th.remove(t);
 		delete t;
+	}*/
+
+	for (Department* dep : departments)
+	{
+		dep->sort_employees_from_department_by_age();
 	}
 }
 void Company::sort_employees_by_work_position()
 {
-	std::list<std::thread*> th;
+	/*std::list<std::thread*> th;
 	for (Department* dep : departments)
 	{
-		th.push_back(new std::thread(&Company::Department::sort_employees_from_department_by_work_position, dep));
+		th.push_back(new std::thread(&Company::Department::sort_employees_from_department_by_work_position, std::ref(dep)));
 	}
 	for (std::thread* t : th)
 	{
@@ -389,14 +404,19 @@ void Company::sort_employees_by_work_position()
 		std::thread* t = th.front();
 		th.remove(t);
 		delete t;
+	}*/
+
+	for (Department* dep : departments)
+	{
+		dep->sort_employees_from_department_by_work_position();
 	}
 }
 void Company::sort_employees_by_salary()
 {
-	std::list<std::thread*> th;
+	/*std::list<std::thread*> th;
 	for (Department* dep : departments)
 	{
-		th.push_back(new std::thread(&Company::Department::sort_employees_from_department_by_salary, dep));
+		th.push_back(new std::thread(&Company::Department::sort_employees_from_department_by_salary, std::ref(dep)));
 	}
 	for (std::thread* t : th)
 	{
@@ -407,14 +427,19 @@ void Company::sort_employees_by_salary()
 		std::thread* t = th.front();
 		th.remove(t);
 		delete t;
+	}*/
+
+	for (Department* dep : departments)
+	{
+		dep->sort_employees_from_department_by_salary();
 	}
 }
 void Company::sort_employees_by_work_experience()
 {
-	std::list<std::thread*> th;
+	/*std::list<std::thread*> th;
 	for (Department* dep : departments)
 	{
-		th.push_back(new std::thread(&Company::Department::sort_employees_from_department_by_work_experience, dep));
+		th.push_back(new std::thread(&Company::Department::sort_employees_from_department_by_work_experience, std::ref(dep)));
 	}
 	for (std::thread* t : th)
 	{
@@ -425,6 +450,11 @@ void Company::sort_employees_by_work_experience()
 		std::thread* t = th.front();
 		th.remove(t);
 		delete t;
+	}*/
+
+	for (Department* dep : departments)
+	{
+		dep->sort_employees_from_department_by_work_experience();
 	}
 }
 
