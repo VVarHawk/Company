@@ -4,4 +4,4 @@ project(Company VERSION 1.0 LANGUAGES CXX)
 
 add_executable(Company main.cpp Company.cpp Department.cpp Department_ID.cpp Employee.cpp Employee_ID.cpp util.cpp)
 
-install(TARGETS Company DESTINATION bin)
+install(TARGETS Company DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/build/bin)
