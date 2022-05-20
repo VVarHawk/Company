@@ -35,13 +35,13 @@ Company::Department::Department_ID::Department_ID(size_t department_id)
 			this->department_id = department_id;
 		}
 		else
-			throw std::exception("Error creating department (this id is already taken)");
+			throw std::runtime_error("Error creating department (this id is already taken)");
 	}
 }
 
 Company::Department::Department_ID::Department_ID(const Department_ID& department_id)
 {
-	throw std::exception("Error creating department");
+	throw std::runtime_error("Error creating department");
 	// There cannot be a copy constructor for this object, because otherwise there will be 2 objects with the same id
 }
 

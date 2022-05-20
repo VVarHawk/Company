@@ -23,7 +23,7 @@ Company::Department::Employee::Employee(size_t employee_id, std::string employee
 }
 Company::Department::Employee::Employee(const Employee& employee)
 {
-	throw std::exception("Error creating employee");
+	throw std::runtime_error("Error creating employee");
 	// There cannot be a copy constructor for this object, because otherwise there will be 2 objects with the same id
 }
 
@@ -84,7 +84,7 @@ void Company::Department::Employee::set_employee_name(std::string new_employee_n
 		return;
 
 	if (new_employee_name == "")
-		throw std::exception("Incorrect input!!!");
+		throw std::runtime_error("Incorrect input!!!");
 
 	this->employee_name = new_employee_name;
 }
@@ -94,7 +94,7 @@ void Company::Department::Employee::set_employee_age(size_t new_employee_age)
 		return;
 
 	if (!new_employee_age)
-		throw std::exception("Incorrect input!!!");
+		throw std::runtime_error("Incorrect input!!!");
 
 	this->employee_age = new_employee_age;
 }
@@ -104,7 +104,7 @@ void Company::Department::Employee::set_employee_work_position(std::string new_e
 		return;
 
 	if (new_employee_work_position == "")
-		throw std::exception("Incorrect input!!!");
+		throw std::runtime_error("Incorrect input!!!");
 
 	this->employee_work_position = new_employee_work_position;
 }

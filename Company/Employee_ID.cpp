@@ -35,12 +35,12 @@ Company::Department::Employee::Employee_ID::Employee_ID(size_t employee_id)
 			this->employee_id = employee_id;
 		}
 		else
-			throw std::exception("Error creating employee (this id is already taken)");
+			throw std::runtime_error("Error creating employee (this id is already taken)");
 	}
 }
 Company::Department::Employee::Employee_ID::Employee_ID(const Employee::Employee_ID& employee_id)
 {
-	throw std::exception("Error creating employee");
+	throw std::runtime_error("Error creating employee");
 	// There cannot be a copy constructor for this object, because otherwise there will be 2 objects with the same id
 }
 

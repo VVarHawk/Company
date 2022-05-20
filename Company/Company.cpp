@@ -60,7 +60,7 @@ size_t Company::get_employee_department_id(size_t employee_id) const
 		if (dep->is_employee_work_here(employee_id))
 			return dep->get_department_id();
 	}
-	throw std::exception("This employee was not found");
+	throw std::runtime_error("This employee was not found");
 }
 
 std::string Company::get_department_name(size_t department_id) const
@@ -69,7 +69,7 @@ std::string Company::get_department_name(size_t department_id) const
 	if (dep != nullptr)
 		return dep->get_department_name();
 	else
-		throw std::exception("This department was not found");
+		throw std::runtime_error("This department was not found");
 }
 size_t Company::get_department_head_id(size_t department_id) const
 {
@@ -77,7 +77,7 @@ size_t Company::get_department_head_id(size_t department_id) const
 	if (dep != nullptr)
 		return dep->get_department_head_id();
 	else
-		throw std::exception("This department was not found");
+		throw std::runtime_error("This department was not found");
 }
 size_t Company::get_department_n_employees(size_t department_id) const
 {
@@ -85,7 +85,7 @@ size_t Company::get_department_n_employees(size_t department_id) const
 	if (dep != nullptr)
 		return dep->get_department_n_employees();
 	else
-		throw std::exception("This department was not found");
+		throw std::runtime_error("This department was not found");
 }
 size_t Company::get_department_id(size_t department_id) const
 {
@@ -93,7 +93,7 @@ size_t Company::get_department_id(size_t department_id) const
 	if (dep != nullptr)
 		return dep->get_department_id();
 	else
-		throw std::exception("This department was not found");
+		throw std::runtime_error("This department was not found");
 }
 
 size_t Company::get_n_employees() const
@@ -117,7 +117,7 @@ void Company::create_employee_with_id(size_t employee_id, std::string employee_n
 	if (dep != nullptr)
 		dep->create_employee_with_id(employee_id, employee_name, employee_age, employee_work_position, employee_salary, employee_work_experience);
 	else
-		throw std::exception("This department was not found");
+		throw std::runtime_error("This department was not found");
 }
 size_t Company::create_employee(std::string employee_name, size_t employee_age, std::string employee_work_position, size_t employee_salary, size_t employee_work_experience, size_t employee_department_id)
 {
@@ -127,7 +127,7 @@ size_t Company::create_employee(std::string employee_name, size_t employee_age, 
 		return dep->create_employee(employee_name, employee_age, employee_work_position, employee_salary, employee_work_experience);
 	}
 	else
-		throw std::exception("This department was not found");
+		throw std::runtime_error("This department was not found");
 }
 
 void Company::create_department_with_id(size_t department_id, std::string department_name)
@@ -152,7 +152,7 @@ void Company::transfer_employee(size_t employee_id, size_t new_department_id)
 		if (dep_from != nullptr)
 		{
 			if (dep_to->get_department_id() == dep_from->get_department_id())
-				throw std::exception("This employee already works in this department");
+				throw std::runtime_error("This employee already works in this department");
 			else
 			{
 				std::string employee_name = dep_from->get_employee_name(employee_id);
@@ -166,10 +166,10 @@ void Company::transfer_employee(size_t employee_id, size_t new_department_id)
 			}
 		}
 		else
-			throw std::exception("This department was not found");
+			throw std::runtime_error("This department was not found");
 	}
 	else
-		throw std::exception("This department was not found");
+		throw std::runtime_error("This department was not found");
 	
 }
 
@@ -194,7 +194,7 @@ void Company::edit_department(size_t department_id, std::string new_department_n
 		dep->edit_department(new_department_name, new_department_head_id);
 	}
 	else
-		throw std::exception("This department was not found");
+		throw std::runtime_error("This department was not found");
 }
 
 void Company::delete_employee(size_t employee_id)
@@ -210,7 +210,7 @@ void Company::delete_department(size_t department_id)
 		delete dep;
 	}
 	else
-		throw std::exception("This department was not found");
+		throw std::runtime_error("This department was not found");
 }
 
 
@@ -225,7 +225,7 @@ void Company::print_department(size_t department_id) const
 	if (dep != nullptr)
 		dep->print_department();
 	else
-		throw std::exception("This department was not found");
+		throw std::runtime_error("This department was not found");
 }
 
 void Company::print_all_employees() const
@@ -251,7 +251,7 @@ void Company::print_all_employees_from_department(size_t department_id) const
 		dep->print_all_employees_from_department();
 	}
 	else
-		throw std::exception("This department was not found");
+		throw std::runtime_error("This department was not found");
 }
 void Company::print_all_departments() const
 {
@@ -472,7 +472,7 @@ department : id name n_employees department_head_id(or 0 if he is not)
 
 	std::ifstream in(file_name);
 	if (!in.is_open())
-		throw std::exception("Failed to open file");
+		throw std::runtime_error("Failed to open file");
 
 	try
 	{

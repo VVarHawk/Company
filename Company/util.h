@@ -5,44 +5,44 @@
 #include <limits>
 
 
-enum class MENU_MODE					// режимы работы меню
+enum class MENU_MODE
 {
-	ADD_EMPLOYEE = 1,			// добавить сотрудника
-	ADD_DEPARTMENT,				// создать департамент
+	ADD_EMPLOYEE = 1,
+	ADD_DEPARTMENT,
 
 	PRINT_ALL_EMPLOYEES,
 	PRINT_EMPLOYEES_FROM_DEPARTMENT,
 	PRINT_ALL_DEPARTMENTS,
 	
 
-	FIND_EMPLOYEE,						// найти сотрудника
+	FIND_EMPLOYEE,
 	FIND_DEPARTMENT,
 
 	EDIT_EMPLOYEE_PROFILE,
 	EDIT_DEPARTMENT_RROFILE,
 
-	SORT_EMPLOYEES,						// сортировать профили сотрудников
+	SORT_EMPLOYEES,
 	SORT_DEPARTMENTS,
 
-	SAVE,						// сохранить данные в файле
-	DOWNLOAD,					// загрузить данные из файла
+	SAVE,
+	DOWNLOAD,
 
-	EXIT						// выйти из приложния
+	EXIT
 };
 
-enum class EMPLOYEE_PROFILE_MODE				// режимы редактивание профиля
+enum class EMPLOYEE_PROFILE_MODE
 {
-	EDIT_ALL = 1,				// редактировать все
-	EDIT_NAME,					// редактировать имя
-	EDIT_AGE,					// редактировать возраст
-	EDIT_WORK_POSITION,				// редактировать должность
-	EDIT_SALARY,				// редактировать зарплату
-	EDIT_WORK_EXPERIENCE,			// редактировать суммарный опыт работы
-	EDIT_WORK_DEPARTMENT,			// редактировать департамент работы
+	EDIT_ALL = 1,
+	EDIT_NAME,
+	EDIT_AGE,
+	EDIT_WORK_POSITION,
+	EDIT_SALARY,
+	EDIT_WORK_EXPERIENCE,
+	EDIT_WORK_DEPARTMENT,
 
-	DELETE_EMPLOYEE,						// удалить профиль
+	DELETE_EMPLOYEE,
 
-	BACK						// выйти из режима редактирования профиля
+	BACK
 };
 enum class DEPARTMENT_PROFILE_MODE
 {
@@ -56,10 +56,10 @@ enum class DEPARTMENT_PROFILE_MODE
 	BACK
 };
 
-enum class EMPLOYEE_FIND_MODE					// режимы поиска сотрудника
+enum class EMPLOYEE_FIND_MODE
 {
-	ID = 1,							// по id
-	NAME,					// по имени
+	ID = 1,				
+	NAME,				
 	AGE,
 	WORK_POSITION,
 	SALARY,

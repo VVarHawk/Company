@@ -31,7 +31,7 @@ MENU_MODE main_menu()
 			switch (mode)
 			{
 			case 0:
-				throw std::exception("Incorrect input");
+				throw std::runtime_error("Incorrect input");
 			case 1:
 				return MENU_MODE::ADD_EMPLOYEE;
 			case 2:
@@ -61,7 +61,7 @@ MENU_MODE main_menu()
 			case 14:
 				return MENU_MODE::EXIT;
 			default:
-				throw std::exception("This function is not in the menu");
+				throw std::runtime_error("This function is not in the menu");
 			}
 		}
 		catch (std::exception& ex)
@@ -96,7 +96,7 @@ EMPLOYEE_PROFILE_MODE employee_profile_menu()
 			switch (mode)
 			{
 			case 0:
-				throw std::exception("Incorrect input");
+				throw std::runtime_error("Incorrect input");
 			case 1:
 				return EMPLOYEE_PROFILE_MODE::EDIT_ALL;
 			case 2:
@@ -116,7 +116,7 @@ EMPLOYEE_PROFILE_MODE employee_profile_menu()
 			case 9:
 				return EMPLOYEE_PROFILE_MODE::BACK;
 			default:
-				throw std::exception("This function is not in the menu");
+				throw std::runtime_error("This function is not in the menu");
 			}
 		}
 		catch (std::exception& ex)
@@ -146,7 +146,7 @@ DEPARTMENT_PROFILE_MODE department_profile_menu()
 			switch (mode)
 			{
 			case 0:
-				throw std::exception("Incorrect input");
+				throw std::runtime_error("Incorrect input");
 			case 1:
 				return DEPARTMENT_PROFILE_MODE::EDIT_ALL;
 			case 2:
@@ -160,7 +160,7 @@ DEPARTMENT_PROFILE_MODE department_profile_menu()
 			case 6:
 				return DEPARTMENT_PROFILE_MODE::BACK;
 			default:
-				throw std::exception("This function is not in the menu");
+				throw std::runtime_error("This function is not in the menu");
 			}
 		}
 		catch (std::exception& ex)
@@ -192,7 +192,7 @@ EMPLOYEE_FIND_MODE employee_find_menu()
 			switch (mode)
 			{
 			case 0:
-				throw std::exception("Incorrect input");
+				throw std::runtime_error("Incorrect input");
 			case 1:
 				return EMPLOYEE_FIND_MODE::ID;
 			case 2:
@@ -206,7 +206,7 @@ EMPLOYEE_FIND_MODE employee_find_menu()
 			case 6:
 				return EMPLOYEE_FIND_MODE::BACK;
 			default:
-				throw std::exception("This function is not in the menu");
+				throw std::runtime_error("This function is not in the menu");
 			}
 		}
 		catch (std::exception& ex)
@@ -235,7 +235,7 @@ DEPARTMENT_FIND_MODE department_find_menu()
 			switch (mode)
 			{
 			case 0:
-				throw std::exception("Incorrect input");
+				throw std::runtime_error("Incorrect input");
 			case 1:
 				return DEPARTMENT_FIND_MODE::ID;
 			case 2:
@@ -245,7 +245,7 @@ DEPARTMENT_FIND_MODE department_find_menu()
 			case 4:
 				return DEPARTMENT_FIND_MODE::BACK;
 			default:
-				throw std::exception("This function is not in the menu");
+				throw std::runtime_error("This function is not in the menu");
 			}
 		}
 		catch (std::exception& ex)
@@ -278,7 +278,7 @@ EMPLOYEE_SORT_MODE employee_sort_menu()
 			switch (mode)
 			{
 			case 0:
-				throw std::exception("Incorrect input");
+				throw std::runtime_error("Incorrect input");
 			case 1:
 				return EMPLOYEE_SORT_MODE::ID;
 			case 2:
@@ -294,7 +294,7 @@ EMPLOYEE_SORT_MODE employee_sort_menu()
 			case 7:
 				return EMPLOYEE_SORT_MODE::BACK;
 			default:
-				throw std::exception("This function is not in the menu");
+				throw std::runtime_error("This function is not in the menu");
 			}
 		}
 		catch (std::exception& ex)
@@ -323,7 +323,7 @@ DEPARTMENT_SORT_MODE department_sort_menu()
 			switch (mode)
 			{
 			case 0:
-				throw std::exception("Incorrect input");
+				throw std::runtime_error("Incorrect input");
 			case 1:
 				return DEPARTMENT_SORT_MODE::ID;
 			case 2:
@@ -333,7 +333,7 @@ DEPARTMENT_SORT_MODE department_sort_menu()
 			case 4:
 				return DEPARTMENT_SORT_MODE::BACK;
 			default:
-				throw std::exception("This function is not in the menu");
+				throw std::runtime_error("This function is not in the menu");
 			}
 		}
 		catch (std::exception& ex)
@@ -354,7 +354,7 @@ std::string input_string()
 			std::getline(std::cin, str);
 
 			if (str == std::string())
-				throw std::exception("Incorrect string input");
+				throw std::runtime_error("Incorrect string input");
 			return str;
 		}
 		catch (std::exception& ex)
@@ -377,7 +377,7 @@ size_t input_size_t()
 				return (size_t)num;
 			}
 			else
-				throw std::exception("Incorrect number input");
+				throw std::runtime_error("Incorrect number input");
 		}
 		catch (std::exception& ex)
 		{
