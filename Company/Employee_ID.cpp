@@ -35,12 +35,13 @@ Company::Department::Employee::Employee_ID::Employee_ID(size_t employee_id)
 			this->employee_id = employee_id;
 		}
 		else
-			throw std::exception("Ошибка создания сотрудника (этот id уже занят)");
+			throw std::exception("Error creating employee (this id is already taken)");
 	}
 }
 Company::Department::Employee::Employee_ID::Employee_ID(const Employee::Employee_ID& employee_id)
 {
-	throw std::exception("Для данного объекта не может быть конструктора копирования, ведь иначе будут 2 объекта с одинаковым id");
+	throw std::exception("Error creating employee");
+	// There cannot be a copy constructor for this object, because otherwise there will be 2 objects with the same id
 }
 
 Company::Department::Employee::Employee_ID::~Employee_ID()
@@ -56,8 +57,3 @@ size_t Company::Department::Employee::Employee_ID::get_employee_id() const
 //private:
 size_t Company::Department::Employee::Employee_ID::next_employee_id = 1;
 std::list<size_t> Company::Department::Employee::Employee_ID::available_employee_id = {};
-/*
-id сотрудников начинаются с 1
-
-0 id для zero_employee
-*/

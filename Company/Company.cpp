@@ -1,40 +1,3 @@
-/*
-======================================================Company.h======================================================
-
-class Company - описывает компанию, управляющую департаментами и сотрдуниками:
-
-public:
-	1) имеет функции РЕДАКТИРОВАНИЯ полей сотрудника edit_employee и департамента edit_department
-
-	2) имеет функции ДОБАВЛЕНИЯ департамента add_department и сотрудника в департамент add_employee
-
-	3) имеет функции ПЕЧАТИ полей сотpудника print_employee и департамента (без работников) print_department,
-					 ПЕЧАТИ всех сотрудников print_all_employees и всех сотрудников департамента print_all_employees_from_department,
-					 ПЕЧАТИ всех департаментов (без работников) print_all_departments,
-					 ПЕЧАТЬ сотрудников с опредленным параментом (именем и проч.) print_employee_with_...
-
-	4) имеет функцию УДАЛЕНИЯ сотрудника delete_employee и всего департамента delete_department и
-					 ПЕРЕВОДА сотрудника из одного департамента в другой transfer_employee
-
-	5) имеет функции СОРТИРОВКИ сотрудников по параметрам sort_employees_from_department_by_...
-
-	6) имеет функции СОХРАНЕНИЯ данных в файл save,
-					 ЗАГРУЗКИ их download
-
-private:
-	7) имеет вспомогательные функции ПОИСКА департамента find_department
-
-	exceptions:
-		a) при некорректном id сотрудника функции set_department_head, get_employee_..., edit_employee, delete_employee,transfer_employee, print_employee
-			вызывает исключение std::exception("Данный сотрудник не найден. Возможно, он работает в другом департаменте");
-		b) при некорректном id департамента функции set_department_head, add_employee, transfer_employee
-			вызывает исключение std::exception("Данный сотрудник не найден. Возможно, он работает в другом департаменте");
-		c) при некорректных значениях функции edit_employee и add_employee, edit_department и add_department, delete_department_head, delete_department, print_all_employees_from_department
-			вызывают исключение std::exception("Данного департамента нет")
-
-=====================================================================================================================
-*/
-
 #include "Company.h"
 
 
@@ -97,7 +60,7 @@ size_t Company::get_employee_department_id(size_t employee_id) const
 		if (dep->is_employee_work_here(employee_id))
 			return dep->get_department_id();
 	}
-	throw std::exception("Данного сотрудника нет");
+	throw std::exception("This employee was not found");
 }
 
 std::string Company::get_department_name(size_t department_id) const
@@ -106,7 +69,7 @@ std::string Company::get_department_name(size_t department_id) const
 	if (dep != nullptr)
 		return dep->get_department_name();
 	else
-		throw std::exception("Департамент не найден");
+		throw std::exception("This department was not found");
 }
 size_t Company::get_department_head_id(size_t department_id) const
 {
@@ -114,7 +77,7 @@ size_t Company::get_department_head_id(size_t department_id) const
 	if (dep != nullptr)
 		return dep->get_department_head_id();
 	else
-		throw std::exception("Департамент не найден");
+		throw std::exception("This department was not found");
 }
 size_t Company::get_department_n_employees(size_t department_id) const
 {
@@ -122,7 +85,7 @@ size_t Company::get_department_n_employees(size_t department_id) const
 	if (dep != nullptr)
 		return dep->get_department_n_employees();
 	else
-		throw std::exception("Департамент не найден");
+		throw std::exception("This department was not found");
 }
 size_t Company::get_department_id(size_t department_id) const
 {
@@ -130,7 +93,7 @@ size_t Company::get_department_id(size_t department_id) const
 	if (dep != nullptr)
 		return dep->get_department_id();
 	else
-		throw std::exception("Департамент не найден");
+		throw std::exception("This department was not found");
 }
 
 size_t Company::get_n_employees() const
@@ -154,7 +117,7 @@ void Company::create_employee_with_id(size_t employee_id, std::string employee_n
 	if (dep != nullptr)
 		dep->create_employee_with_id(employee_id, employee_name, employee_age, employee_work_position, employee_salary, employee_work_experience);
 	else
-		throw std::exception("Данный департамент не найден");
+		throw std::exception("This department was not found");
 }
 size_t Company::create_employee(std::string employee_name, size_t employee_age, std::string employee_work_position, size_t employee_salary, size_t employee_work_experience, size_t employee_department_id)
 {
@@ -164,7 +127,7 @@ size_t Company::create_employee(std::string employee_name, size_t employee_age, 
 		return dep->create_employee(employee_name, employee_age, employee_work_position, employee_salary, employee_work_experience);
 	}
 	else
-		throw std::exception("Данный департамент не найден");
+		throw std::exception("This department was not found");
 }
 
 void Company::create_department_with_id(size_t department_id, std::string department_name)
@@ -189,7 +152,7 @@ void Company::transfer_employee(size_t employee_id, size_t new_department_id)
 		if (dep_from != nullptr)
 		{
 			if (dep_to->get_department_id() == dep_from->get_department_id())
-				throw std::exception("Данный сотрудник уже работает в этом департаменте");
+				throw std::exception("This employee already works in this department");
 			else
 			{
 				std::string employee_name = dep_from->get_employee_name(employee_id);
@@ -203,10 +166,10 @@ void Company::transfer_employee(size_t employee_id, size_t new_department_id)
 			}
 		}
 		else
-			throw std::exception("Данного департамента нет");
+			throw std::exception("This department was not found");
 	}
 	else
-		throw std::exception("Данного департамента нет");
+		throw std::exception("This department was not found");
 	
 }
 
@@ -231,7 +194,7 @@ void Company::edit_department(size_t department_id, std::string new_department_n
 		dep->edit_department(new_department_name, new_department_head_id);
 	}
 	else
-		throw std::exception("Данного департамента нет");
+		throw std::exception("This department was not found");
 }
 
 void Company::delete_employee(size_t employee_id)
@@ -247,7 +210,7 @@ void Company::delete_department(size_t department_id)
 		delete dep;
 	}
 	else
-		throw std::exception("Данного департамента нет");
+		throw std::exception("This department was not found");
 }
 
 
@@ -262,7 +225,7 @@ void Company::print_department(size_t department_id) const
 	if (dep != nullptr)
 		dep->print_department();
 	else
-		throw std::exception("Данный департамент не найден");
+		throw std::exception("This department was not found");
 }
 
 void Company::print_all_employees() const
@@ -288,7 +251,7 @@ void Company::print_all_employees_from_department(size_t department_id) const
 		dep->print_all_employees_from_department();
 	}
 	else
-		throw std::exception("Данного департамента нет");
+		throw std::exception("This department was not found");
 }
 void Company::print_all_departments() const
 {
@@ -492,10 +455,10 @@ void Company::sort_departments_by_n_employees()
 
 void Company::download(std::string file_name)
 /*
-кол-во_департаментов
+n_departments
 
-департамент : id имя кол-во_работников id_главы_департамента(или 0 если нет)
-	работник : id имя возраст должность зарпалата опыт_работы
+department : id name n_employees department_head_id(or 0 if he is not)
+	employee : id name age work_position salary work_experience
 	...
 ...
 */
@@ -509,7 +472,7 @@ void Company::download(std::string file_name)
 
 	std::ifstream in(file_name);
 	if (!in.is_open())
-		throw std::exception("Не удалось открыть файл");
+		throw std::exception("Failed to open file");
 
 	try
 	{

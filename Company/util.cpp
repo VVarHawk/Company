@@ -8,30 +8,30 @@ MENU_MODE main_menu()
 	{
 		try
 		{
-			std::cout << "-----------------*ГЛАВНОЕ МЕНЮ*-----------------\n";
-			std::cout << "1. Add new employee\n";
-			std::cout << "2. Add new department\n";
-			std::cout << "3. Print all employees\n";
-			std::cout << "4. Print all employees from department\n";
-			std::cout << "5. Print all departments\n";
-			std::cout << "6. Найти сотрудника\n";
-			std::cout << "7. Найти департамент\n";
-			std::cout << "8. Редактировать профиль сотрудника\n";
-			std::cout << "9. Редактировать профиль департамента\n";
-			std::cout << "10. Сортировать профили сотрудников\n";
-			std::cout << "11. Сортировать профили департаментов\n";
-			std::cout << "12. Сохранить\n";
-			std::cout << "13. Загрузить базу данных\n";
-			std::cout << "14. Выход\n";
+			std::cout << "------------------*MAIN MENU*------------------\n";
+			std::cout << "1.  Add new employee\n";
+			std::cout << "2.  Add new department\n";
+			std::cout << "3.  Print all employees\n";
+			std::cout << "4.  Print all employees from department\n";
+			std::cout << "5.  Print all departments\n";
+			std::cout << "6.  Find employee\n";
+			std::cout << "7.  Find department\n";
+			std::cout << "8.  Edit employee profile\n";
+			std::cout << "9.  Edit department profile\n";
+			std::cout << "10. Sort employee profiles\n";
+			std::cout << "11. Sort department profiles\n";
+			std::cout << "12. Save\n";
+			std::cout << "13. Download\n";
+			std::cout << "14. Exit\n";
 			std::cout << "------------------------------------------------\n";
 
-			std::cout << "Выберите режим: ";
+			std::cout << "Select mode: ";
 			size_t mode = input_size_t(); std::cout << std::endl;
 
 			switch (mode)
 			{
 			case 0:
-				throw std::exception("Некорректный ввод");
+				throw std::exception("Incorrect input");
 			case 1:
 				return MENU_MODE::ADD_EMPLOYEE;
 			case 2:
@@ -61,12 +61,12 @@ MENU_MODE main_menu()
 			case 14:
 				return MENU_MODE::EXIT;
 			default:
-				throw std::exception("Данной функции нет в меню");
+				throw std::exception("This function is not in the menu");
 			}
 		}
 		catch (std::exception& ex)
 		{
-			std::cout << ex.what() << ". Повторите ввод\n\n\n\n";
+			std::cout << ex.what() << ". Retype\n\n\n\n";
 		}
 	}
 
@@ -78,25 +78,25 @@ EMPLOYEE_PROFILE_MODE employee_profile_menu()
 	{
 		try
 		{
-			std::cout << "-------*Редактирование профиля сотрудника*------\n";
-			std::cout << "1. Редактировать все\n";
-			std::cout << "2. Изменить имя\n";
-			std::cout << "3. Изменить возраст\n";
-			std::cout << "4. Изменить должность\n";
-			std::cout << "5. Изменить зарплату\n";
-			std::cout << "6. Изменить опыт работы\n";
-			std::cout << "7. Изменить департамент работы\n";
-			std::cout << "8. Удалить профиль\n";
-			std::cout << "9. Назад\n";
+			std::cout << "-------------*EDIT EMPLOYEE PROFILE*------------\n";
+			std::cout << "1. Edit all\n";
+			std::cout << "2. Edit name\n";
+			std::cout << "3. Edit age\n";
+			std::cout << "4. Edit work position\n";
+			std::cout << "5. Edit salary\n";
+			std::cout << "6. Edit work experience\n";
+			std::cout << "7. Edit department\n";
+			std::cout << "8. Delete profile\n";
+			std::cout << "9. Back\n";
 			std::cout << "------------------------------------------------\n";
 
-			std::cout << "Введите режим редактирования профиля : ";
+			std::cout << "Select mode: ";
 			size_t mode = input_size_t(); std::cout << std::endl;
 
 			switch (mode)
 			{
 			case 0:
-				throw std::exception("Некорректный ввод");
+				throw std::exception("Incorrect input");
 			case 1:
 				return EMPLOYEE_PROFILE_MODE::EDIT_ALL;
 			case 2:
@@ -116,12 +116,12 @@ EMPLOYEE_PROFILE_MODE employee_profile_menu()
 			case 9:
 				return EMPLOYEE_PROFILE_MODE::BACK;
 			default:
-				throw std::exception("Данной функции нет в меню");
+				throw std::exception("This function is not in the menu");
 			}
 		}
 		catch (std::exception& ex)
 		{
-			std::cout << ex.what() << ". Повторите ввод\n\n\n\n";
+			std::cout << ex.what() << ". Retype\n\n\n\n";
 		}
 	}
 }
@@ -131,22 +131,22 @@ DEPARTMENT_PROFILE_MODE department_profile_menu()
 	{
 		try
 		{
-			std::cout << "------*Редактирование профиля департамента*-----\n";
-			std::cout << "1. Редактировать все\n";
-			std::cout << "2. Изменить имя\n";
-			std::cout << "3. Изменить главу департамента\n";
-			std::cout << "4. Убрать главу департамента\n";
-			std::cout << "5. Удалить департамент\n";
-			std::cout << "6. Назад\n";
+			std::cout << "------------*EDIT DEPARTMENT PROFILE*-----------\n";
+			std::cout << "1. Edit all\n";
+			std::cout << "2. Edit name\n";
+			std::cout << "3. Change department head\n";
+			std::cout << "4. Delete department head\n";
+			std::cout << "5. Delete department profile\n";
+			std::cout << "6. Back\n";
 			std::cout << "------------------------------------------------\n";
 
-			std::cout << "Введите режим редактирования профиля : ";
+			std::cout << "Select mode: ";
 			size_t mode = input_size_t(); std::cout << std::endl;
 
 			switch (mode)
 			{
 			case 0:
-				throw std::exception("Некорректный ввод");
+				throw std::exception("Incorrect input");
 			case 1:
 				return DEPARTMENT_PROFILE_MODE::EDIT_ALL;
 			case 2:
@@ -160,12 +160,12 @@ DEPARTMENT_PROFILE_MODE department_profile_menu()
 			case 6:
 				return DEPARTMENT_PROFILE_MODE::BACK;
 			default:
-				throw std::exception("Данной функции нет в меню");
+				throw std::exception("This function is not in the menu");
 			}
 		}
 		catch (std::exception& ex)
 		{
-			std::cout << ex.what() << ". Повторите ввод\n\n\n\n";
+			std::cout << ex.what() << ". Retype\n\n\n\n";
 		}
 	}
 }
@@ -176,23 +176,23 @@ EMPLOYEE_FIND_MODE employee_find_menu()
 	{
 		try
 		{
-			std::cout << "---------------*Поиск сотрудника*---------------\n";
-			std::cout << "1. По ID\n";
-			std::cout << "2. По имени\n";
-			std::cout << "3. По возрасту\n";
-			std::cout << "4. По должности\n";
-			std::cout << "5. По зарплате\n";
-			std::cout << "6. Назад\n";
+			std::cout << "----------------*FIND EMPLOYEE*-----------------\n";
+			std::cout << "1. By id\n";
+			std::cout << "2. By name\n";
+			std::cout << "3. By age\n";
+			std::cout << "4. By work position\n";
+			std::cout << "5. By salary\n";
+			std::cout << "6. Back\n";
 			std::cout << "------------------------------------------------\n";
 			
 
-			std::cout << "Введите параметр поиска сотрудника: ";
+			std::cout << "Select mode: ";
 			size_t mode = input_size_t(); std::cout << std::endl;
 
 			switch (mode)
 			{
 			case 0:
-				throw std::exception("Некорректный ввод");
+				throw std::exception("Incorrect input");
 			case 1:
 				return EMPLOYEE_FIND_MODE::ID;
 			case 2:
@@ -206,12 +206,12 @@ EMPLOYEE_FIND_MODE employee_find_menu()
 			case 6:
 				return EMPLOYEE_FIND_MODE::BACK;
 			default:
-				throw std::exception("Данной функции нет в меню");
+				throw std::exception("This function is not in the menu");
 			}
 		}
 		catch (std::exception& ex)
 		{
-			std::cout << ex.what() << ". Повторите ввод\n\n\n\n";
+			std::cout << ex.what() << ". Retype\n\n\n\n";
 		}
 	}
 }
@@ -221,21 +221,21 @@ DEPARTMENT_FIND_MODE department_find_menu()
 	{
 		try
 		{
-			std::cout << "--------------*Поиск департамента*--------------\n";
-			std::cout << "1. По ID\n";
-			std::cout << "2. По названию\n";
-			std::cout << "3. По кол-ву сотрудников\n";//?
-			std::cout << "4. Назад\n";
+			std::cout << "---------------*FIND DEPARMTENT*----------------\n";
+			std::cout << "1. By id\n";
+			std::cout << "2. By name\n";
+			std::cout << "3. By number of employees\n";//?
+			std::cout << "4. Back\n";
 			std::cout << "------------------------------------------------\n";
 
 
-			std::cout << "Введите параметр поиска департамента: ";
+			std::cout << "Select mode: ";
 			size_t mode = input_size_t(); std::cout << std::endl;
 
 			switch (mode)
 			{
 			case 0:
-				throw std::exception("Некорректный ввод");
+				throw std::exception("Incorrect input");
 			case 1:
 				return DEPARTMENT_FIND_MODE::ID;
 			case 2:
@@ -245,12 +245,12 @@ DEPARTMENT_FIND_MODE department_find_menu()
 			case 4:
 				return DEPARTMENT_FIND_MODE::BACK;
 			default:
-				throw std::exception("Данной функции нет в меню");
+				throw std::exception("This function is not in the menu");
 			}
 		}
 		catch (std::exception& ex)
 		{
-			std::cout << ex.what() << ". Повторите ввод\n\n\n\n";
+			std::cout << ex.what() << ". Retype\n\n\n\n";
 		}
 	}
 }
@@ -261,24 +261,24 @@ EMPLOYEE_SORT_MODE employee_sort_menu()
 	{
 		try
 		{
-			std::cout << "------------*Сортировка сотрудников*------------\n";
-			std::cout << "1. По ID\n";
-			std::cout << "2. По имени\n";
-			std::cout << "3. По возрасту\n";
-			std::cout << "4. По должности\n";
-			std::cout << "5. По зарплате\n";
-			std::cout << "6. По опыту работы\n";
-			std::cout << "7. Назад\n";
+			std::cout << "----------------*SORT EMPLOYEES*----------------\n";
+			std::cout << "1. By id\n";
+			std::cout << "2. By name\n";
+			std::cout << "3. By age\n";
+			std::cout << "4. By work position\n";
+			std::cout << "5. By salary\n";
+			std::cout << "6. By work experience\n";
+			std::cout << "7. Back\n";
 			std::cout << "------------------------------------------------\n";
 
 
-			std::cout << "Введите параметр поиска департамента: ";
+			std::cout << "Select mode: ";
 			size_t mode = input_size_t(); std::cout << std::endl;
 
 			switch (mode)
 			{
 			case 0:
-				throw std::exception("Некорректный ввод");
+				throw std::exception("Incorrect input");
 			case 1:
 				return EMPLOYEE_SORT_MODE::ID;
 			case 2:
@@ -294,12 +294,12 @@ EMPLOYEE_SORT_MODE employee_sort_menu()
 			case 7:
 				return EMPLOYEE_SORT_MODE::BACK;
 			default:
-				throw std::exception("Данной функции нет в меню");
+				throw std::exception("This function is not in the menu");
 			}
 		}
 		catch (std::exception& ex)
 		{
-			std::cout << ex.what() << ". Повторите ввод\n\n\n\n";
+			std::cout << ex.what() << ". Retype\n\n\n\n";
 		}
 	}
 }
@@ -309,21 +309,21 @@ DEPARTMENT_SORT_MODE department_sort_menu()
 	{
 		try
 		{
-			std::cout << "-----------*Сортировка департаментов*-----------\n";
-			std::cout << "1. По ID\n";
-			std::cout << "2. По названию\n";
-			std::cout << "3. По кол-ву сотрудников\n";
-			std::cout << "4. Назад\n";
+			std::cout << "---------------*SORT DEPARTMENT*----------------\n";
+			std::cout << "1. By id\n";
+			std::cout << "2. By name\n";
+			std::cout << "3. By number of employees\n";
+			std::cout << "4. Back\n";
 			std::cout << "------------------------------------------------\n";
 
 
-			std::cout << "Введите параметр поиска департамента: ";
+			std::cout << "Select mode: ";
 			size_t mode = input_size_t(); std::cout << std::endl;
 
 			switch (mode)
 			{
 			case 0:
-				throw std::exception("Некорректный ввод");
+				throw std::exception("Incorrect input");
 			case 1:
 				return DEPARTMENT_SORT_MODE::ID;
 			case 2:
@@ -333,12 +333,12 @@ DEPARTMENT_SORT_MODE department_sort_menu()
 			case 4:
 				return DEPARTMENT_SORT_MODE::BACK;
 			default:
-				throw std::exception("Данной функции нет в меню");
+				throw std::exception("This function is not in the menu");
 			}
 		}
 		catch (std::exception& ex)
 		{
-			std::cout << ex.what() << ". Повторите ввод\n\n\n\n";
+			std::cout << ex.what() << ". Retype\n\n\n\n";
 		}
 	}
 }
@@ -354,12 +354,12 @@ std::string input_string()
 			std::getline(std::cin, str);
 
 			if (str == std::string())
-				throw std::exception("Некорректный ввод строки");
+				throw std::exception("Incorrect string input");
 			return str;
 		}
 		catch (std::exception& ex)
 		{
-			std::cout << ex.what() << ". Повторите ввод : ";
+			std::cout << ex.what() << ". Retype: ";
 		}
 	}
 	
@@ -377,11 +377,11 @@ size_t input_size_t()
 				return (size_t)num;
 			}
 			else
-				throw std::exception("Некорректный ввод числа");
+				throw std::exception("Incorrect number input");
 		}
 		catch (std::exception& ex)
 		{
-			std::cout << ex.what() << ". Повторите ввод : ";
+			std::cout << ex.what() << ". Retype: ";
 		}
 	}
 	

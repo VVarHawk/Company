@@ -54,7 +54,8 @@ Company::Department::Employee::Employee(size_t employee_id, std::string employee
 }
 Company::Department::Employee::Employee(const Employee& employee)
 {
-	throw std::exception("Для данного объекта не может быть конструктора копирования, ведь иначе будут 2 объекта с одинаковым id");
+	throw std::exception("Error creating employee");
+	// There cannot be a copy constructor for this object, because otherwise there will be 2 objects with the same id
 }
 
 Company::Department::Employee::~Employee()
@@ -114,7 +115,7 @@ void Company::Department::Employee::set_employee_name(std::string new_employee_n
 		return;
 
 	if (new_employee_name == "")
-		throw std::exception("Неверный ввод!!!");
+		throw std::exception("Incorrect input!!!");
 
 	this->employee_name = new_employee_name;
 }
@@ -124,7 +125,7 @@ void Company::Department::Employee::set_employee_age(size_t new_employee_age)
 		return;
 
 	if (!new_employee_age)
-		throw std::exception("Неверный ввод!!!");
+		throw std::exception("Incorrect input!!!");
 
 	this->employee_age = new_employee_age;
 }
@@ -134,7 +135,7 @@ void Company::Department::Employee::set_employee_work_position(std::string new_e
 		return;
 
 	if (new_employee_work_position == "")
-		throw std::exception("Неверный ввод!!!");
+		throw std::exception("Incorrect input!!!");
 
 	this->employee_work_position = new_employee_work_position;
 }

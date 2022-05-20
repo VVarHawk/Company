@@ -199,9 +199,9 @@ private:
 
 			size_t get_department_id() const;
 		private:
-			size_t						department_id;				// id департамента
+			size_t						department_id;
 
-			static size_t				next_department_id;	// id следующего департамента
+			static size_t				next_department_id;
 			static std::list<size_t>	available_department_id;
 		} department_id;
 		class Employee
@@ -267,10 +267,6 @@ private:
 
 
 			class Employee_ID
-				/*
-				Данный класс отвечает за присвоение сотруднику его ID и привязку сотрудника к контретному департаменту
-				*/
-
 			{
 			public:
 				Employee_ID();
@@ -282,10 +278,10 @@ private:
 
 				size_t get_employee_id() const;
 			private:
-				size_t				employee_id;													// id сотрудника
+				size_t				employee_id;
 
-				static	size_t				next_employee_id;										// id следующего сотрудника
-				static	std::list<size_t>	available_employee_id;									// свободные id сотруднинов (если кого-то уволили)
+				static	size_t				next_employee_id;
+				static	std::list<size_t>	available_employee_id;
 			} employee_id;
 		};
 	};

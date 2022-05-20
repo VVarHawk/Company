@@ -35,13 +35,14 @@ Company::Department::Department_ID::Department_ID(size_t department_id)
 			this->department_id = department_id;
 		}
 		else
-			throw std::exception("Ошибка создания департамента (этот id уже занят)");
+			throw std::exception("Error creating department (this id is already taken)");
 	}
 }
 
 Company::Department::Department_ID::Department_ID(const Department_ID& department_id)
 {
-	throw std::exception("Для данного объекта не может быть конструктора копирования, ведь иначе будут 2 объекта с одинаковым id");
+	throw std::exception("Error creating department");
+	// There cannot be a copy constructor for this object, because otherwise there will be 2 objects with the same id
 }
 
 Company::Department::Department_ID::~Department_ID()
