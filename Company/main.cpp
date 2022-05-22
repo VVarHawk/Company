@@ -451,7 +451,7 @@ int main()
 				for (;;)
 				{
 					std::cout << "Save before exit? ((y)es/(n)o\n";
-					char_t ans; std::cin >> ans;
+					char ans; std::cin >> ans;
 					switch (ans)
 					{
 					case 'y':
